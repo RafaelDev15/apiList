@@ -12,16 +12,45 @@ class ProductController{
 
     async store(req, res){
         
-        const {product, code, description, note} = req.body;
+        const {product, inventory, code, description, note, date} = req.body;
 
         const products = await Product.create({
             product,
+            inventory,
             code,
             description,
-            note
+            note,
+            date
         });
 
         return res.json(products);
+    }
+
+    async destroy(req, res){
+
+        const {item_id} = req.body;
+
+        await Product.findByIdAndDelete({ _id: item_id });
+
+        return res.json({Message: "Item excluido com sucesso"});
+    }
+
+    async update(req, res){
+
+        const {item_id} = req.params;
+
+        const {product, inventory, code, description, note} = req.body;
+
+        await Product.updateOne({ _id: item_id }, {
+            product,
+            inventory,
+            code,
+            description,
+            note,
+        });
+
+        return res.json({Message: "Dados atuaçizados com sucesso"});
+
     }
 
 }

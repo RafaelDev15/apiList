@@ -11,4 +11,8 @@ routes.get('/allProducts', ProductController.show);
 
 routes.post('/products', upload.single('image'), ProductController.store);
 
+routes.put('/productUpdate/:item_id', upload.single('image'), ProductController.update);
+
+routes.delete('/productsDelete', ProductController.destroy);
+
 module.exports = routes;
