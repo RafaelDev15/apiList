@@ -28,7 +28,7 @@ class ProductController{
 
     async destroy(req, res){
 
-        const {item_id} = req.body;
+        const {item_id} = req.params;
 
         await Product.findByIdAndDelete({ _id: item_id });
 

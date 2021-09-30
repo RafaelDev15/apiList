@@ -13,6 +13,6 @@ routes.post('/products', upload.single('image'), ProductController.store);
 
 routes.put('/productUpdate/:item_id', upload.single('image'), ProductController.update);
 
-routes.delete('/productsDelete', ProductController.destroy);
+routes.delete('/productsDelete/:item_id', ProductController.destroy);
 
 module.exports = routes;
